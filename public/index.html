@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>okDriver Fleet Monitoring Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <div>
+          <h1>okDriver Fleet Monitor</h1>
+          <p>Simulated live dashcam analytics dashboard</p>
+        </div>
+        <span class="status-pill" id="ws-status">Connecting…</span>
+      </header>
+
+      <main class="layout">
+        <section class="metrics">
+          <div class="metric-card">
+            <span class="metric-label">Total Trips</span>
+            <span class="metric-value" id="metric-trips">0</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">Live Drivers</span>
+            <span class="metric-value" id="metric-drivers">0</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">Violations</span>
+            <span class="metric-value" id="metric-violations">0</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">Risk Score</span>
+            <span class="metric-value" id="metric-risk">50</span>
+          </div>
+        </section>
+
+        <section class="content">
+          <div class="left-column">
+            <div class="panel">
+              <div class="panel-header">
+                <h2>Live Dashcam Feed</h2>
+              </div>
+              <div class="video-wrapper">
+                <iframe
+                  src="https://www.youtube.com/embed/live_stream?channel=UCsuZs9FETSHrMqNRTgvZ0ZQ"
+                  title="Live dashcam"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+
+            <div class="panel">
+              <div class="panel-header">
+                <h2>Events by Type</h2>
+              </div>
+              <canvas id="eventsChart" height="140"></canvas>
+            </div>
+          </div>
+
+          <div class="right-column">
+            <div class="panel">
+              <div class="panel-header">
+                <h2>Recent Events</h2>
+              </div>
+              <div class="table-wrapper">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Time</th>
+                      <th>Driver</th>
+                      <th>Vehicle</th>
+                      <th>Type</th>
+                      <th>Speed (km/h)</th>
+                    </tr>
+                  </thead>
+                  <tbody id="events-body"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="alert-banner" id="alert-banner" hidden>
+              <span id="alert-text"></span>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+  </html>
+

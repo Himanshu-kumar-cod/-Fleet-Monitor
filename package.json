@@ -1,0 +1,30 @@
+{
+  "name": "fleet-dashcam",
+  "version": "1.0.0",
+  "description": "okDriver full stack assignment - simulated live fleet monitoring dashboard",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js"
+  },
+  "keywords": [
+    "express",
+    "websocket",
+    "socket.io",
+    "mysql",
+    "dashcam",
+    "realtime"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "mysql2": "^3.11.3",
+    "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
